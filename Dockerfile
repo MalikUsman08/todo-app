@@ -10,9 +10,6 @@ COPY . .
 
 RUN npm run build
 
-# Make the startup script executable
-RUN chmod +x start.sh
-
 EXPOSE 3000
 
-CMD ["./start.sh"] 
+CMD ["npm", "run", "start:prod"] 
