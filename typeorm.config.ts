@@ -15,4 +15,13 @@ export default new DataSource({
     configService.get('NODE_ENV') === 'production'
       ? { rejectUnauthorized: false }
       : false,
+  connectTimeoutMS: 10000,
+  extra: {
+    connectionTimeoutMillis: 10000,
+    query_timeout: 10000,
+    statement_timeout: 10000,
+  },
+  retryAttempts: 10,
+  retryDelay: 3000,
+  keepConnectionAlive: true,
 });
