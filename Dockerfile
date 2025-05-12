@@ -10,9 +10,9 @@ COPY . .
 
 RUN npm run build
 
-# Run migrations
-RUN npm run migration:run
+# Make the startup script executable
+RUN chmod +x start.sh
 
 EXPOSE 3000
 
-CMD ["node", "dist/src/main.js"] 
+CMD ["./start.sh"] 
