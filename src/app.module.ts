@@ -21,7 +21,9 @@ import { AppService } from './app.service';
           type: 'postgres' as const,
           url: dbUrl,
           entities: [__dirname + '/**/*.entity{.ts,.js}'],
-          synchronize: configService.get<string>('NODE_ENV') !== 'production',
+          migrations: [__dirname + '/migrations/*{.ts,.js}'],
+          migrationsRun: true, // This will run migrations automatically
+          synchronize: false, // Disable synchronize in production
           ssl:
             configService.get<string>('NODE_ENV') === 'production'
               ? { rejectUnauthorized: false }
